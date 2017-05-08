@@ -36,6 +36,7 @@ def worker():
     while 1:
         res = pool.urlopen('GET', url, preload_content=False)
         assert res.status == 404
+        res.read()
         res.release_conn()
         sys.stdout.write('.')
         sys.stdout.flush()
